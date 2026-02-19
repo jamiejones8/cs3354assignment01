@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * GroceryManagement class to manage and display grocery inventory
  * CS3354 - Object-Oriented Programming
@@ -34,6 +36,35 @@ public class GroceryManagement {
         itemNames[1] = "Banana";
         itemPrices[1] = 0.59;
         itemStocks[1] = 150;
-        printInventory(itemNames, itemPrices, itemStocks); //calls the method to print the inventory
+
+        Menu myMenu = new Menu();
+
+        Scanner userInput = new Scanner(System.in);
+
+        while (true) {
+            myMenu.printMenu();
+            int choice = userInput.nextInt();
+
+            if (choice == 1) {
+                printInventory(itemNames, itemPrices, itemStocks);
+            } else if (choice == 2) {
+                userInput.nextLine(); // clean up
+
+                System.out.println("Enter Your Target: ");
+                String targetName = userInput.nextLine();
+
+                System.out.print("To increase amount (int): ");
+                int increaseByAmount = userInput.nextInt();
+
+                Restock.restockItem(itemNames, itemStocks, targetName, increaseByAmount);
+            } else if (choice == 3) {
+                System.out.println("Byee....");
+                break;
+            } else {
+                System.out.println("Invalid Input. Choose from Menu.");
+            }
+        }
+
+        userInput.close();
     }
 }

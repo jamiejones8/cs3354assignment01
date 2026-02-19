@@ -3,8 +3,9 @@
 * Searches for the target item name and increases its stock by one if found
 * If not found, prints "Item not found"
 */
+class Restock {
 
-public static void restockItem(String[] names, int[] stocks, String target, int amount){
+    public static void restockItem(String[] names, int[] stocks, String target, int amount) {
 
     // False is default state
     boolean found = false;
@@ -23,4 +24,5 @@ public static void restockItem(String[] names, int[] stocks, String target, int 
     if(found == false){
         System.out.println(target + " not found.");
     }
+}
 }
