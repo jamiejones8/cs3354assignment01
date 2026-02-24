@@ -37,15 +37,24 @@ public class GroceryManagement {
         itemPrices[1] = 0.59;
         itemStocks[1] = 150;
 
+        // create a Menu object to display the menu options
         Menu myMenu = new Menu();
 
+        // Scanner object to read user input from the console
         Scanner userInput = new Scanner(System.in);
 
         while (true) {
+            // display the menu options to the user
             myMenu.printMenu();
+
+            // read the user's choice from the console
             int choice = userInput.nextInt();
 
+            // process the user's choice and perform the corresponding action
             if (choice == 1) {
+
+                // call the printInventory method to display the current inventory of grocery
+                // items
                 printInventory(itemNames, itemPrices, itemStocks);
             } else if (choice == 2) {
                 userInput.nextLine(); // clean up
@@ -56,6 +65,8 @@ public class GroceryManagement {
                 System.out.print("To increase amount (int): ");
                 int increaseByAmount = userInput.nextInt();
 
+                // call the Restock class's restockItem method to update the stock of the
+                // specified item
                 Restock.restockItem(itemNames, itemStocks, targetName, increaseByAmount);
             } else if (choice == 3) {
                 System.out.println("Byee....");
